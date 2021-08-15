@@ -1,0 +1,20 @@
+{
+    "name": "elishaukpong/hexagonal-arc-app",
+    "description": "A simple hexagonal app tutorial follow-through",
+    "type": "project",
+    "require": {
+        "php": "7.4.*"
+    },
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "HexagonalArcApp\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Elisha Ukpong",
+            "email": "ishukpong418@gmail.com"
+        }
+    ]
+}
