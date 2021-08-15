@@ -3,12 +3,13 @@
 namespace HexagonalArcApp\Application\Command\Post\Handler;
 
 use Exception;
+use HexagonalArcApp\Application\Command\CommandHandlerInterface;
 use HexagonalArcApp\Application\Command\CommandInterface;
 use HexagonalArcApp\Application\Command\Post\CreatePostCommand;
 use HexagonalArcApp\Domain\Post\Post;
 use HexagonalArcApp\Domain\Post\PostRepositoryInterface;
 
-class CreatePostHandler implements \HexagonalArcApp\Application\Command\CommandHandlerInterface
+class CreatePostHandler implements CommandHandlerInterface
 {
 
     private $postRepository;
@@ -23,6 +24,9 @@ class CreatePostHandler implements \HexagonalArcApp\Application\Command\CommandH
 
     // Since we are not permitted more specific types of the
     // CommandInterface, we'll have to check its type.
+    /**
+     * @throws Exception
+     */
     public function handle(CommandInterface $command)
     {
         if (!$command instanceof CreatePostCommand) {
