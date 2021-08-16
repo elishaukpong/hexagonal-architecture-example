@@ -7,6 +7,7 @@ use HexagonalArcApp\Application\Command\CommandHandlerInterface;
 use HexagonalArcApp\Application\Command\CommandInterface;
 use HexagonalArcApp\Application\Command\Comment\CreateCommentCommand;
 use HexagonalArcApp\Domain\Comment\Comment;
+use HexagonalArcApp\Infrastructure\Persistence\CommentRepository;
 
 class CreateCommentHandler implements CommandHandlerInterface
 {

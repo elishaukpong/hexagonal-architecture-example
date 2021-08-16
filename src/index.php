@@ -1,22 +1,20 @@
 <?php
 
+use HexagonalArcApp\Application\Command\Comment\CreateCommentCommand;
 use HexagonalArcApp\Application\Command\Post\CreatePostCommand;
-use HexagonalArcApp\Application\Command\Post\Handler\CreatePostHandler;
-use HexagonalArcApp\Infrastructure\CommandBus\SynchronousCommandBus;
-use HexagonalArcApp\Infrastructure\Persistence\PostRepository;
 
-require '../vendor/autoload.php';
-
-$commandBus = new SynchronousCommandBus();
-
-$postRepository = new PostRepository;
-$commandHandler = new CreatePostHandler($postRepository);
-
-$commandBus->register(CreatePostCommand::class, $commandHandler);
+$commandBus = require_once 'kernel.php';
 
 $command = new CreatePostCommand(
     "This is the post title",
     "And this is the content"
 );
 
-$commandBus->execute($command);
+$createCommentCommand = new CreateCommentCommand(
+    "This is the post title",
+    "And this is the content",
+    "We are free indeed"
+);
+
+$commandBus->execute($command)
+            ->execute($createCommentCommand);

@@ -26,7 +26,8 @@ class SynchronousCommandBus implements CommandBusInterface
             throw new Exception("{$commandName} is not supported by the SynchronousCommandBus.");
         }
 
-        return $this->handlers[$commandName]->handle($command);
+        $this->handlers[$commandName]->handle($command);
+        return $this;
     }
 
     // Now all we need is a function to register handlers
