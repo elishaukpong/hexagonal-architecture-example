@@ -38,9 +38,17 @@ class SynchronousCommandBus implements CommandBusInterface
         return $this;
     }
 
+    /**
+     * @throws Exception
+     */
     public function registerCommands(array $commands)
     {
         foreach ($commands as $command => $commandHandler){
+            //check that command has two array values
+            if(count($commandHandler) != 2){
+                throw new Exception($command . " does not have handler and repository provided.");
+            }
+
             //this is a very crude way to do this,
             // reflection class would be the best way to go.
             $handler = new $commandHandler[0](new $commandHandler[1]);

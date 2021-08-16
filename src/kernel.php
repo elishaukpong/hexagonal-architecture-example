@@ -8,6 +8,11 @@ $config = require_once 'config.php';
 
 $commandBus = CommandBusFactory::make(CommandBusFactory::SYNCHRONOUS_BUS);
 
-$commandBus->registerCommands($config['commands']);
+try{
+    $commandBus->registerCommands($config['commands']);
+}catch (\Exception $exception){
+    echo $exception->getMessage();
+    exit;
+}
 
 return $commandBus;
