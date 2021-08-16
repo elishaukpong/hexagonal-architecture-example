@@ -5,6 +5,8 @@ use HexagonalArcApp\Application\Command\Post\CreatePostCommand;
 
 $commandBus = require_once 'kernel.php';
 
+
+
 $command = new CreatePostCommand(
     "This is the post title",
     "And this is the content"

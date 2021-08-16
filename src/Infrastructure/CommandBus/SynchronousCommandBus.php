@@ -37,4 +37,15 @@ class SynchronousCommandBus implements CommandBusInterface
 
         return $this;
     }
+
+    public function registerCommands(array $commands)
+    {
+        foreach ($commands as $command => $commandHandler){
+            //this is a very crude way to do this,
+            // reflection class would be the best way to go.
+            $handler = new $commandHandler[0](new $commandHandler[1]);
+
+            $this->register($command,$handler);
+        }
+    }
 }
