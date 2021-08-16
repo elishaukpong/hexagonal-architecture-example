@@ -11,7 +11,7 @@ use HexagonalArcApp\Infrastructure\Persistence\PostRepository;
 
 return [
     'commands' => [
-        CreatePostCommand::class => [CreatePostHandler::class],
+        CreatePostCommand::class => [CreatePostHandler::class, PostRepository::class],
         CreateCommentCommand::class => [CreateCommentHandler::class, CommentRepository::class]
     ]
 ];

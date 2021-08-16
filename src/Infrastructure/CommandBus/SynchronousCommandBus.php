@@ -41,7 +41,7 @@ class SynchronousCommandBus implements CommandBusInterface
     /**
      * @throws Exception
      */
-    public function registerCommands(array $commands)
+    public function registerCommands($commands)
     {
         foreach ($commands as $command => $commandHandler){
             //check that command has two array values
@@ -49,8 +49,10 @@ class SynchronousCommandBus implements CommandBusInterface
                 throw new Exception($command . " does not have handler and repository provided.");
             }
 
-            //this is a very crude way to do this,
-            // reflection class would be the best way to go.
+            if(!class_exists($commandHandler[0]) || !class_exists($commandHandler[1])){
+                throw new Exception($command . " has missing classes. Kindly create them.");
+            }
+
             $handler = new $commandHandler[0](new $commandHandler[1]);
 
             $this->register($command,$handler);

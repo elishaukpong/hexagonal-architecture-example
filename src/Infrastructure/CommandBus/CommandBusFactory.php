@@ -6,9 +6,6 @@ class CommandBusFactory
 {
     const SYNCHRONOUS_BUS = 1;
 
-    /**
-     * @throws \Exception
-     */
     public static function make($type)
     {
         switch ($type)
