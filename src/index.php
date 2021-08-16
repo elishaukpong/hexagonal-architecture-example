@@ -9,7 +9,7 @@ $commandBus = require_once 'kernel.php';
 // and the data carried from the web request,
 // cli, or anywhere else.
 
-$command = new CreatePostCommand(
+$createPostCommand = new CreatePostCommand(
     "This is the post title",
     "And this is the content"
 );
@@ -20,5 +20,5 @@ $createCommentCommand = new CreateCommentCommand(
     "We are free indeed"
 );
 
-$commandBus->execute($command)
+$commandBus->execute($createPostCommand)
             ->execute($createCommentCommand);
