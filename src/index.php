@@ -5,7 +5,9 @@ use HexagonalArcApp\Application\Command\Post\CreatePostCommand;
 
 $commandBus = require_once 'kernel.php';
 
-
+//This should take place in the controller,
+// and the data carried from the web request,
+// cli, or anywhere else.
 
 $command = new CreatePostCommand(
     "This is the post title",
