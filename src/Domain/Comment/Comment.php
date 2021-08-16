@@ -7,4 +7,5 @@ class Comment
     public $id;
     public $title;
     public $contents;
+    public $commenter;
 }
