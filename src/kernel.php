@@ -11,8 +11,6 @@ use HexagonalArcApp\Infrastructure\Persistence\PostRepository;
 require '../vendor/autoload.php';
 
 
-
-
 $commandBus = new SynchronousCommandBus();
 
 $postRepository = new PostRepository;
@@ -23,7 +21,6 @@ $commentCommandHandler = new CreateCommentHandler($commentRepository);
 
 $commandBus->register(CreatePostCommand::class, $postCommandHandler)
     ->register(CreateCommentCommand::class, $commentCommandHandler);
-
 
 
 return $commandBus;
