@@ -6,6 +6,8 @@ interface CommandBusInterface
 {
     public function execute(CommandInterface $command);
 
+    public function getHandler(CommandInterface $command);
+
     public function register(string $commandName, CommandHandlerInterface $command);
 
     public function registerCommands(array $commands);
