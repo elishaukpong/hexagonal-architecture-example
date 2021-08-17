@@ -18,6 +18,13 @@ class SynchronousCommandBus implements CommandBusInterface
      */
     public function execute(CommandInterface $command)
     {
+        $this->getHandler($command)
+                ->handle($command);
+        return $this;
+    }
+
+    public function getHandler(CommandInterface $command)
+    {
         $commandName = get_class($command);
 
         // We'll need to check if the Command that's given
@@ -26,8 +33,7 @@ class SynchronousCommandBus implements CommandBusInterface
             throw new Exception("{$commandName} is not supported by the SynchronousCommandBus.");
         }
 
-        $this->handlers[$commandName]->handle($command);
-        return $this;
+        return $this->handlers[$commandName];
     }
 
     // Now all we need is a function to register handlers
